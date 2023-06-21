@@ -1,0 +1,46 @@
+{	"extensionName": "Bluetooth ESP32",
+	"description":"Uses inbuilt ESP32 bluetooth",
+	"author":"Jesus Romero",
+	"sort":1,
+	"extensionPort": 0,
+	"firmware":"1.1.103",
+	"javascriptURL":"js/arduino.js",
+	"blockSpecs": [
+
+
+	["R", "bytes disponibles bluetooth","avaibleBT",
+	{"encode":"{d0}","setup":"BT.begin(\"ESP32_BT\");\n","inc":"#include \"BluetoothSerial.h\"","def":"#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)\n#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it\n#endif\nBluetoothSerial BT;\n","work":"BT.available()","loop":""}],
+
+	["R", "bytes leido por bluetooth","readBT",
+	{"encode":"{d0}","setup":"","inc":"","def":"","work":"BT.read()","loop":""}],
+
+	["w", "escribir por bluetooth el texto %s","writeBT","texto",
+	{"encode":"{d0}","setup":"","inc":"","def":"","work":"BT.println({0});\n","loop":""}],
+
+	],
+	"menus": {
+			"onoff": ["On", "Off"],
+		"beats":["500","250","125","1000","2000","0"],
+		"servovalue":["0","45","90","135","180"],
+		"pwmvalue":["0","50","100","150","255"],
+		"digital":["HIGH","LOW"],
+		"notes":["C2","D2","E2","F2","G2","A2","B2","C3","D3","E3","F3","G3","A3","B3","C4","D4","E4","F4","G4","A4","B4","C5","D5","E5","F5","G5","A5","B5","C6","D6","E6","F6","G6","A6","B6","C7","D7","E7","F7","G7","A7","B7","C8","D8"],
+		"beats":["Half","Quarter","Eighth","Whole","Double","Zero"]
+	},
+	"values":{
+	"On":1,
+		"Off":0,
+		"run":2,
+		"get":1,
+		"digital":30,
+		"analog":31,
+		"pwm":32,
+		"servo_pin":33,
+		"tone":34,
+		"timer":50,
+		"HIGH":1,"LOW":0
+
+	},
+	"translators":{
+	}
+}
